@@ -1,2 +1,2 @@
-# ShapeDetector
-Shape Detection with RANSAC
+# LineDetector
+Line Detection with RANSAC

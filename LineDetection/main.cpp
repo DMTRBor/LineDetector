@@ -1,20 +1,17 @@
 #include <iostream>
-#include <string>
 #include "ransac.h"
 
 using namespace std;
-typedef unsigned char unchar;
 
 int main()
 {
-    string imagePath = "";
     bool isPrintImage = false;
 
     int numOfIters = 20;
     double threshold = 2;
     RANSAC ransac;
 
-    vector<vector<int>> image = ransac.loadImage(imagePath);
+    vector<vector<int>> image = ransac.loadImage();
     if (isPrintImage)
     {
         ransac.printImage(image);

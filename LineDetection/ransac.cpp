@@ -4,19 +4,18 @@
 #include <math.h>
 #include <time.h>
 #include <cmath>
-#include <string>
 #include <iostream>
 
 int const numRows = 640;
 int const numColumns = 480;
 
 using namespace std;
-typedef unsigned char unchar;
 
 RANSAC::RANSAC() {}
 
-vector<vector<int>> RANSAC::loadImage(string fileName)
+vector<vector<int>> RANSAC::loadImage()
 {
+    //Create random image
     srand(time(NULL));
     vector<vector<int>> image;
 
@@ -85,9 +84,12 @@ vector<double> RANSAC::fitLine(int rowPoint1, int colPoint1, int rowPoint2, int 
     CalcInverse calcinv;
     vector<vector<double>> inverseA = calcinv.getInverse(A);
 
-    for (int i = 0; i < 2; i++) {
-        for (int j = 0; j < 1; j++) {
-            for (int k = 0; k < 2; k++) {
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 1; j++)
+        {
+            for (int k = 0; k < 2; k++)
+            {
                 p[k] = inverseA[i][k] * q[k][j];
             }
         }
@@ -143,7 +145,7 @@ vector<int> RANSAC::calcRansac(vector<vector<int>> image, int numOfIters, double
     double maxScore = -1.0;
     vector<int> nonZeros = getNonZeroIdx(image);
 
-    for (int k = 0; k < numOfIters; k++)
+    for (int i = 0; i < numOfIters; i++)
     {
         vector<int> randowPoint = randomSample();
         vector<double> a_b = fitLine(randowPoint[0], randowPoint[1], randowPoint[2], randowPoint[3]);

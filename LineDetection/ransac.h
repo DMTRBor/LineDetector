@@ -1,16 +1,12 @@
 #ifndef RANSAC_H
 #define RANSAC_H
 #include <vector>
-#include <string>
-
-typedef unsigned char unchar;
 
 class RANSAC
 {
 public:
     RANSAC();
-    // std::vector<std::vector<unsigned int>> loadImage(std::string fileName);
-    std::vector<std::vector<int>> loadImage(std::string fileName);
+    std::vector<std::vector<int>> loadImage();
     void printImage(std::vector<std::vector<int>> image);
     std::vector<int> calcRansac(std::vector<std::vector<int>> image, int numOfIters, double threshold);
 
